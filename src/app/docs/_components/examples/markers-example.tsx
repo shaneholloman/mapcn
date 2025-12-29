@@ -24,7 +24,7 @@ const locations = [
 
 export function MarkersExample() {
   return (
-    <div className="h-[400px] w-full overflow-hidden">
+    <div className="h-[400px] w-full">
       <Map center={[-73.98, 40.76]} zoom={12}>
         {locations.map((location) => (
           <MapMarker

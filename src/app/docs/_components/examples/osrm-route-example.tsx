@@ -39,8 +39,8 @@ export function OsrmRouteExample() {
   }, []);
 
   return (
-    <div className="h-[400px] w-full overflow-hidden relative">
-      <Map center={[-73.975, 40.77]} zoom={12.5}>
+    <div className="h-[400px] w-full relative">
+      <Map center={[-73.975, 40.772]} zoom={12.5}>
         {route && (
           <MapRoute
             coordinates={route}

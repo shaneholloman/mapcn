@@ -164,7 +164,7 @@ function CustomLayer() {
 
 export function CustomLayerExample() {
   return (
-    <div className="h-[400px] w-full overflow-hidden">
+    <div className="h-[400px] w-full">
       <Map center={[-73.97, 40.78]} zoom={11.8}>
         <MapControls />
         <CustomLayer />

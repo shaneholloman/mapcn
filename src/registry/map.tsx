@@ -13,15 +13,7 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
-import {
-  X,
-  Compass,
-  Minus,
-  Plus,
-  Locate,
-  Maximize,
-  Loader2,
-} from "lucide-react";
+import { X, Minus, Plus, Locate, Maximize, Loader2 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 
@@ -104,7 +96,7 @@ function Map({ children, ...props }: MapProps) {
     }
   }, [resolvedTheme]);
 
-  const isLoading = !isLoaded && !isStyleLoaded;
+  const isLoading = !isLoaded || !isStyleLoaded;
 
   return (
     <MapContext.Provider
@@ -185,19 +177,23 @@ function MapMarker({
     if (onMouseEnter) container.addEventListener("mouseenter", onMouseEnter);
     if (onMouseLeave) container.addEventListener("mouseleave", onMouseLeave);
 
+    const handleDragStart = () => {
+      const lngLat = marker.getLngLat();
+      onDragStart?.({ lng: lngLat.lng, lat: lngLat.lat });
+    };
+    const handleDrag = () => {
+      const lngLat = marker.getLngLat();
+      onDrag?.({ lng: lngLat.lng, lat: lngLat.lat });
+    };
+    const handleDragEnd = () => {
+      const lngLat = marker.getLngLat();
+      onDragEnd?.({ lng: lngLat.lng, lat: lngLat.lat });
+    };
+
     if (draggable) {
-      marker.on("dragstart", () => {
-        const lngLat = marker.getLngLat();
-        onDragStart?.({ lng: lngLat.lng, lat: lngLat.lat });
-      });
-      marker.on("drag", () => {
-        const lngLat = marker.getLngLat();
-        onDrag?.({ lng: lngLat.lng, lat: lngLat.lat });
-      });
-      marker.on("dragend", () => {
-        const lngLat = marker.getLngLat();
-        onDragEnd?.({ lng: lngLat.lng, lat: lngLat.lat });
-      });
+      marker.on("dragstart", handleDragStart);
+      marker.on("drag", handleDrag);
+      marker.on("dragend", handleDragEnd);
     }
 
     setIsReady(true);
@@ -208,6 +204,11 @@ function MapMarker({
         container.removeEventListener("mouseenter", onMouseEnter);
       if (onMouseLeave)
         container.removeEventListener("mouseleave", onMouseLeave);
+      if (draggable) {
+        marker.off("dragstart", handleDragStart);
+        marker.off("drag", handleDrag);
+        marker.off("dragend", handleDragEnd);
+      }
       marker.remove();
       markerRef.current = null;
       markerElementRef.current = null;
@@ -328,7 +329,7 @@ function MarkerPopup({
 type MarkerTooltipProps = {
   children: ReactNode;
   className?: string;
-} & Omit<PopupOptions, "className">;
+} & Omit<PopupOptions, "className" | "closeButton" | "closeOnClick">;
 
 function MarkerTooltip({
   children,
@@ -413,7 +414,7 @@ function MarkerLabel({
     <div
       className={cn(
         "absolute left-1/2 -translate-x-1/2 whitespace-nowrap",
-        "text-[10px] font-medium",
+        "text-[10px] font-medium text-foreground",
         positionClasses[position],
         className
       )}
@@ -582,16 +583,16 @@ function MapControls({
 
 function CompassButton({ onClick }: { onClick?: () => void }) {
   const { isLoaded, map } = useMap();
+  const compassRef = useRef<SVGSVGElement>(null);
 
   useEffect(() => {
-    if (!isLoaded || !map) return;
+    if (!isLoaded || !map || !compassRef.current) return;
 
-    const compass = document.getElementById("map-compass-icon");
-    if (!compass) return;
+    const compass = compassRef.current;
 
     const updateRotation = () => {
-      const bearing = map?.getBearing() ?? 0;
-      const pitch = map?.getPitch() ?? 0;
+      const bearing = map.getBearing();
+      const pitch = map.getPitch();
       compass.style.transform = `rotateX(${pitch}deg) rotateZ(${-bearing}deg)`;
     };
 
@@ -600,8 +601,8 @@ function CompassButton({ onClick }: { onClick?: () => void }) {
     updateRotation();
 
     return () => {
-      map?.off("rotate", updateRotation);
-      map?.off("pitch", updateRotation);
+      map.off("rotate", updateRotation);
+      map.off("pitch", updateRotation);
     };
   }, [isLoaded, map]);
 
@@ -609,13 +610,20 @@ function CompassButton({ onClick }: { onClick?: () => void }) {
     <button
       onClick={onClick}
       aria-label="Reset bearing to north"
+      type="button"
       className="flex items-center justify-center size-8 hover:bg-accent transition-colors"
     >
-      <Compass
-        id="map-compass-icon"
-        className="size-4 transition-transform duration-200"
+      <svg
+        ref={compassRef}
+        viewBox="0 0 24 24"
+        className="size-5 transition-transform duration-200"
         style={{ transformStyle: "preserve-3d" }}
-      />
+      >
+        <path d="M12 2L16 12H12V2Z" className="fill-red-500" />
+        <path d="M12 2L8 12H12V2Z" className="fill-red-300" />
+        <path d="M12 22L16 12H12V22Z" className="fill-muted-foreground/60" />
+        <path d="M12 22L8 12H12V22Z" className="fill-muted-foreground/30" />
+      </svg>
     </button>
   );
 }

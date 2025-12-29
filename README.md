@@ -10,7 +10,7 @@
   </p>
   
   <p>
-    <a href="https://mapcn.vercel.app/docs">Get Started</a> •
+    <a href="https://mapcn.vercel.app">Get Started</a> •
     <a href="https://mapcn.vercel.app/docs/installation">Installation</a> •
     <a href="https://mapcn.vercel.app/docs/basic-map">Examples</a>
   </p>

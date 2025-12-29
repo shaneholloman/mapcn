@@ -50,7 +50,7 @@ export function ComponentPreviewClient({
         <CopyButton text={code} />
       </div>
 
-      <div className={cn("overflow-hidden h-[400px]", className)}>
+      <div className={cn("h-[400px] overflow-hidden", className)}>
         {activeTab === "preview" ? (
           <div className="h-full">{children}</div>
         ) : (

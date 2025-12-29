@@ -8,7 +8,7 @@ export function StandalonePopupExample() {
   const [showPopup, setShowPopup] = useState(true);
 
   return (
-    <div className="h-[400px] w-full overflow-hidden relative">
+    <div className="h-[400px] w-full relative">
       <Map center={[-74.006, 40.7128]} zoom={13}>
         <MapPopup
           longitude={-74.006}
@@ -19,7 +19,7 @@ export function StandalonePopupExample() {
           focusAfterOpen={false}
           closeOnClick={false}
         >
-          <div className="space-y-2 pr-4">
+          <div className="space-y-2">
             <h3 className="font-semibold text-foreground">New York City</h3>
             <p className="text-sm text-muted-foreground">
               The city that never sleeps. Population: 8.3 million

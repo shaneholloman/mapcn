@@ -64,7 +64,7 @@ function MapController() {
 
 export function AdvancedUsageExample() {
   return (
-    <div className="h-[450px] w-full overflow-hidden">
+    <div className="h-[400px] w-full">
       <Map center={[-73.9857, 40.7484]} zoom={15}>
         <MapController />
       </Map>

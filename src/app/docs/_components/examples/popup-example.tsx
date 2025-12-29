@@ -13,6 +13,7 @@ const places = [
   {
     id: 1,
     name: "The Metropolitan Museum of Art",
+    label: "Museum",
     category: "Museum",
     rating: 4.8,
     reviews: 12453,
@@ -25,6 +26,7 @@ const places = [
   {
     id: 2,
     name: "Brooklyn Bridge",
+    label: "Landmark",
     category: "Landmark",
     rating: 4.9,
     reviews: 8234,
@@ -37,6 +39,7 @@ const places = [
   {
     id: 3,
     name: "Grand Central Terminal",
+    label: "Transit",
     category: "Transit",
     rating: 4.7,
     reviews: 5621,
@@ -50,13 +53,13 @@ const places = [
 
 export function PopupExample() {
   return (
-    <div className="h-[500px] w-full overflow-hidden">
+    <div className="h-[500px] w-full">
       <Map center={[-73.98, 40.74]} zoom={11}>
         {places.map((place) => (
           <MapMarker key={place.id} longitude={place.lng} latitude={place.lat}>
             <MarkerContent>
               <div className="size-5 rounded-full bg-rose-500 border-2 border-white shadow-lg cursor-pointer hover:scale-110 transition-transform" />
-              <MarkerLabel>{place.name}</MarkerLabel>
+              <MarkerLabel position="bottom">{place.label}</MarkerLabel>
             </MarkerContent>
             <MarkerPopup className="p-0 w-62">
               <div className="relative h-32 overflow-hidden rounded-t-md">

@@ -45,7 +45,7 @@ export default function MarkersPage() {
         </p>
       </DocsSection>
 
-      <ComponentPreview code={popupSource}>
+      <ComponentPreview code={popupSource} className="h-[500px]">
         <PopupExample />
       </ComponentPreview>
     </DocsLayout>

@@ -7,6 +7,8 @@ import {
 } from "../_components/docs";
 import { CodeBlock } from "../_components/code-block";
 import { Metadata } from "next";
+import { Card } from "@/components/ui/card";
+import { Map, MapControls } from "@/registry/map";
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "site-url-here";
 
@@ -17,8 +19,8 @@ import { Card } from "@/components/ui/card";
 
 export function MyMap() {
   return (
-    <Card className="h-[400px] p-0 overflow-hidden w-full">
-      <Map center={[-74.006, 40.7128]} zoom={12}>
+    <Card className="h-[300px] p-0 overflow-hidden">
+      <Map center={[-74.006, 40.7128]} zoom={11}>
         <MapControls />
       </Map>
     </Card>
@@ -63,6 +65,11 @@ export default function InstallationPage() {
       <DocsSection title="Usage">
         <p>Import and use the map component:</p>
         <CodeBlock code={usageCode} />
+        <Card className="h-[300px] p-0 overflow-hidden rounded-lg">
+          <Map center={[-74.006, 40.7128]} zoom={11}>
+            <MapControls />
+          </Map>
+        </Card>
       </DocsSection>
 
       <DocsNote>

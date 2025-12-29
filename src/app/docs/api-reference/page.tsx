@@ -304,7 +304,9 @@ export default function ApiReferencePage() {
           >
             PopupOptions
           </DocsLink>{" "}
-          from MapLibre GL.
+          from MapLibre GL (excluding <DocsCode>closeButton</DocsCode> and{" "}
+          <DocsCode>closeOnClick</DocsCode> as tooltips auto-dismiss on hover
+          out).
         </p>
         <DocsPropTable
           props={[
