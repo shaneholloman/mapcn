@@ -36,7 +36,11 @@ export async function StarCount() {
 
   const data = await response.json();
 
-  const formattedCount = data.stargazers_count?.toLocaleString();
+  const formattedCount =
+    data.stargazers_count >= 1000
+      ? `${(data.stargazers_count / 1000).toFixed(1)}k`
+      : data.stargazers_count;
+
   return (
     <>
       {formattedCount && (

@@ -10,7 +10,7 @@ import {
   MarkerTooltip,
   MapRoute,
 } from "@/registry/map";
-import { Truck, Flame, TrendingUp, Zap } from "lucide-react";
+import { Truck, Flame, TrendingUp, Zap, Coffee } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const analyticsData = [
@@ -60,11 +60,11 @@ export function Examples() {
   } | null>(null);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-8 animate-fade-in delay-400">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 animate-fade-in delay-400">
       {/* Widget 1: Analytics - spans 2 cols, 2 rows */}
       <ExampleCard
-        label=""
-        className="col-span-1 sm:col-span-2 sm:row-span-2 h-[300px] lg:h-[412px]"
+        label="Analytics Dashboard"
+        className="col-span-1 sm:col-span-2 sm:row-span-2 h-[300px] sm:h-[432px]"
         delay="delay-400"
       >
         {/* Stats Panel */}
@@ -139,7 +139,7 @@ export function Examples() {
       </ExampleCard>
 
       {/* Widget 2: EV Charging */}
-      <ExampleCard label="EV Charging" className="h-[200px]" delay="delay-500">
+      <ExampleCard label="EV Charging" className="h-[208px]" delay="delay-500">
         <Map center={[-122.425, 37.777]} zoom={11.5}>
           <MapMarker longitude={-122.4194} latitude={37.7749}>
             <MarkerContent>
@@ -215,7 +215,7 @@ export function Examples() {
       </ExampleCard>
 
       {/* Widget 3: Navigation */}
-      <ExampleCard label="Locate Me" className="h-[200px]" delay="delay-600">
+      <ExampleCard label="Locate Me" className="h-[208px]" delay="delay-600">
         <Map center={[77.5946, 12.9716]} zoom={10.5}>
           <MapControls showZoom={false} showLocate onLocate={setUserLocation} />
           {userLocation && (
@@ -236,7 +236,7 @@ export function Examples() {
       </ExampleCard>
 
       {/* Widget 4: Delivery Tracking */}
-      <ExampleCard label="Delivery" className="h-[200px]" delay="delay-500">
+      <ExampleCard label="Delivery" className="h-[208px]" delay="delay-500">
         <Map center={[-0.1076, 51.517]} zoom={11.2}>
           <MapRoute
             coordinates={[
@@ -273,7 +273,7 @@ export function Examples() {
       </ExampleCard>
 
       {/* Widget 5: Trending Now */}
-      <ExampleCard label="Trending" className="h-[200px]" delay="delay-600">
+      <ExampleCard label="Trending" className="h-[208px]" delay="delay-600">
         <Map center={[-73.99, 40.735]} zoom={9.5}>
           <MapMarker longitude={-73.9857} latitude={40.7484}>
             <MarkerContent>
@@ -329,6 +329,62 @@ export function Examples() {
                 <div className="flex items-center justify-center gap-1 text-muted-foreground">
                   <TrendingUp className="size-3 text-green-500" />
                   <span className="text-xs text-green-500">890 visitors</span>
+                </div>
+              </div>
+            </MarkerTooltip>
+          </MapMarker>
+        </Map>
+      </ExampleCard>
+
+      {/* Widget 6: Nearby Cafes */}
+      <ExampleCard label="Nearby" className="h-[208px]" delay="delay-700">
+        <Map center={[2.3522, 48.8566]} zoom={13}>
+          <MapMarker longitude={2.3522} latitude={48.8566}>
+            <MarkerContent>
+              <div className="bg-amber-700 rounded-full p-1.5 shadow-lg shadow-amber-700/30">
+                <Coffee className="size-3 text-white" />
+              </div>
+            </MarkerContent>
+            <MarkerTooltip>
+              <div className="text-xs space-y-0.5">
+                <div className="font-medium">Café de Flore</div>
+                <div className="flex items-center gap-1">
+                  <span className="text-amber-600">★ 4.8</span>
+                  <span className="text-muted-foreground">• Open now</span>
+                </div>
+              </div>
+            </MarkerTooltip>
+          </MapMarker>
+
+          <MapMarker longitude={2.3472} latitude={48.8606}>
+            <MarkerContent>
+              <div className="bg-amber-700 rounded-full p-1.5 shadow-lg shadow-amber-700/30">
+                <Coffee className="size-3 text-white" />
+              </div>
+            </MarkerContent>
+            <MarkerTooltip>
+              <div className="text-xs space-y-0.5">
+                <div className="font-medium">Les Deux Magots</div>
+                <div className="flex items-center gap-1">
+                  <span className="text-amber-600">★ 4.6</span>
+                  <span className="text-muted-foreground">• Open now</span>
+                </div>
+              </div>
+            </MarkerTooltip>
+          </MapMarker>
+
+          <MapMarker longitude={2.3592} latitude={48.8526}>
+            <MarkerContent>
+              <div className="bg-amber-700 rounded-full p-1.5 shadow-lg shadow-amber-700/30">
+                <Coffee className="size-3 text-white" />
+              </div>
+            </MarkerContent>
+            <MarkerTooltip>
+              <div className="text-xs space-y-0.5">
+                <div className="font-medium">Coutume Café</div>
+                <div className="flex items-center gap-1">
+                  <span className="text-amber-600">★ 4.7</span>
+                  <span className="text-muted-foreground">• Closes 6pm</span>
                 </div>
               </div>
             </MarkerTooltip>

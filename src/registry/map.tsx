@@ -89,7 +89,10 @@ function Map({ children, styles, ...props }: MapProps) {
     const mapInstance = new MapLibreGL.Map({
       container: containerRef.current,
       style: mapStyle,
-      attributionControl: false,
+      renderWorldCopies: false,
+      attributionControl: {
+        compact: true,
+      },
       ...props,
     });
 
@@ -523,7 +526,7 @@ const positionClasses = {
   "top-left": "top-2 left-2",
   "top-right": "top-2 right-2",
   "bottom-left": "bottom-2 left-2",
-  "bottom-right": "bottom-2 right-2",
+  "bottom-right": "bottom-10 right-2",
 };
 
 function ControlGroup({ children }: { children: React.ReactNode }) {
