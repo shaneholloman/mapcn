@@ -45,7 +45,7 @@ function ExampleCard({
         className
       )}
     >
-      <div className="absolute top-2 left-2 z-10 text-[10px] text-muted-foreground bg-background/90 backdrop-blur-sm rounded px-2 py-1">
+      <div className="uppercase absolute top-2 left-2 z-10 tracking-wider text-[10px] text-muted-foreground bg-background/90 backdrop-blur-sm rounded px-2 py-1">
         {label}
       </div>
       {children}
@@ -64,12 +64,12 @@ export function Examples() {
       {/* Widget 1: Analytics */}
       <ExampleCard
         label="Analytics"
-        className="sm:col-span-2 sm:aspect-2/1 aspect-square"
+        className="aspect-square sm:col-span-2 sm:aspect-video lg:aspect-auto"
         delay="delay-400"
       >
         {/* Stats Panel */}
         <div className="absolute top-3 left-3 z-10 bg-background/95 backdrop-blur-md rounded-lg p-3 border border-border/50 shadow-lg">
-          <div className="text-[10px] text-muted-foreground uppercase tracking-wider mb-1">
+          <div className="tracking-wider text-[10px] text-muted-foreground uppercase mb-1">
             Active Users
           </div>
           <div className="text-2xl font-semibold leading-tight">2,847</div>
@@ -141,11 +141,7 @@ export function Examples() {
       </ExampleCard>
 
       {/* Widget 2: Delivery */}
-      <ExampleCard
-        label="Delivery"
-        className="aspect-square lg:aspect-auto"
-        delay="delay-500"
-      >
+      <ExampleCard label="Delivery" className="aspect-square" delay="delay-500">
         <Map center={[-0.1076, 51.517]} zoom={12}>
           <MapRoute
             coordinates={[
