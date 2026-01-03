@@ -12,6 +12,7 @@ import {
   Route,
   Wrench,
   Settings,
+  Layers,
 } from "lucide-react";
 
 import {
@@ -48,6 +49,7 @@ const navigation = [
       { title: "Markers", href: "/docs/markers", icon: MapPin },
       { title: "Popups", href: "/docs/popups", icon: MessageSquare },
       { title: "Routes", href: "/docs/routes", icon: Route },
+      { title: "Clusters", href: "/docs/clusters", icon: Layers },
       { title: "Advanced Usage", href: "/docs/advanced-usage", icon: Wrench },
     ],
   },

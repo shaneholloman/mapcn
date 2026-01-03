@@ -45,9 +45,11 @@ function ExampleCard({
         className
       )}
     >
-      <div className="uppercase absolute top-2 left-2 z-10 tracking-wider text-[10px] text-muted-foreground bg-background/90 backdrop-blur-sm rounded px-2 py-1">
-        {label}
-      </div>
+      {label && (
+        <div className="uppercase absolute top-2 left-2 z-10 tracking-wider text-[10px] text-muted-foreground bg-background/90 backdrop-blur-sm rounded px-2 py-1">
+          {label}
+        </div>
+      )}
       {children}
     </div>
   );
@@ -63,7 +65,7 @@ export function Examples() {
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 animate-fade-in delay-400">
       {/* Widget 1: Analytics */}
       <ExampleCard
-        label="Analytics"
+        label=""
         className="aspect-square sm:col-span-2 sm:aspect-video lg:aspect-auto"
         delay="delay-400"
       >

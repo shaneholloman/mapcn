@@ -44,7 +44,7 @@ export default function AdvancedPage() {
     <DocsLayout
       title="Advanced Usage"
       description="Access the underlying MapLibre GL instance for advanced customization."
-      prev={{ title: "Routes", href: "/docs/routes" }}
+      prev={{ title: "Clusters", href: "/docs/clusters" }}
     >
       <DocsSection>
         <p>
@@ -126,10 +126,6 @@ export default function AdvancedPage() {
           <li>
             <strong>Custom data layers</strong> - Overlay weather, traffic, or
             satellite imagery
-          </li>
-          <li>
-            <strong>Clustering</strong> - Group thousands of markers into
-            clusters for performance
           </li>
         </ul>
       </DocsSection>

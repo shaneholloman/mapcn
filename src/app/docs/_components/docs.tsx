@@ -180,13 +180,13 @@ export function DocsPropTable({ props }: DocsPropTableProps) {
               <TableCell className="px-4 py-3.5 font-mono text-primary align-top">
                 <DocsCode className="text-[13px]">{prop.name}</DocsCode>
               </TableCell>
-              <TableCell className="px-4 py-3.5 font-mono  text-muted-foreground align-top overflow-hidden whitespace-normal">
+              <TableCell className="px-4 py-3.5 font-mono text-muted-foreground align-top overflow-hidden whitespace-normal">
                 <DocsCode className="text-xs">{prop.type}</DocsCode>
               </TableCell>
-              <TableCell className="px-4 py-3.5 font-mono  text-muted-foreground align-top">
+              <TableCell className="px-4 py-3.5 font-mono text-muted-foreground align-top whitespace-normal">
                 <DocsCode className="text-xs">{prop.default ?? "—"}</DocsCode>
               </TableCell>
-              <TableCell className="px-4 py-3.5 text-sm text-muted-foreground whitespace-normal leading-relaxed">
+              <TableCell className="px-4 py-3.5 text-sm text-muted-foreground whitespace-normal min-w-[180px] leading-relaxed">
                 {prop.description}
               </TableCell>
             </TableRow>
