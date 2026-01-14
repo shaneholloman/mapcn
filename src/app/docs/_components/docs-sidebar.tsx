@@ -19,7 +19,6 @@ import { docsNavigation } from "@/lib/docs-navigation";
 
 export function DocsSidebar() {
   const pathname = usePathname();
-  // Todo
   const { setOpenMobile } = useSidebar();
 
   return (
