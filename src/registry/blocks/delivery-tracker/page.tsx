@@ -62,7 +62,7 @@ function formatDuration(seconds?: number) {
   return `${hours}h ${remainingMinutes}m`;
 }
 
-export function DeliveryBlock() {
+export default function Page() {
   const [routeData, setRouteData] = useState<OsrmRouteData | null>(null);
   const [loading, setLoading] = useState(true);
 

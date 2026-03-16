@@ -14,7 +14,7 @@
   "files": [
     {
       "path": "src/registry/blocks/logistics-network/page.tsx",
-      "content": "\"use client\";\n\nimport { SidebarInset, SidebarProvider } from \"@/components/ui/sidebar\";\nimport { hubs, routes } from \"./data\";\nimport { FilterSidebar } from \"./components/filter-sidebar\";\nimport { NetworkMap } from \"./components/network-map\";\n\nexport function LogisticsNetworkBlock() {\n  return (\n    <SidebarProvider>\n      <FilterSidebar hubs={hubs} routes={routes} />\n      <SidebarInset>\n        <NetworkMap hubs={hubs} routes={routes} />\n      </SidebarInset>\n    </SidebarProvider>\n  );\n}\n",
+      "content": "\"use client\";\n\nimport { SidebarInset, SidebarProvider } from \"@/components/ui/sidebar\";\nimport { hubs, routes } from \"./data\";\nimport { FilterSidebar } from \"./components/filter-sidebar\";\nimport { NetworkMap } from \"./components/network-map\";\n\nexport default function Page() {\n  return (\n    <SidebarProvider>\n      <FilterSidebar hubs={hubs} routes={routes} />\n      <SidebarInset>\n        <NetworkMap hubs={hubs} routes={routes} />\n      </SidebarInset>\n    </SidebarProvider>\n  );\n}\n",
       "type": "registry:page",
       "target": "app/logistics/page.tsx"
     },

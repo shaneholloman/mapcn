@@ -146,7 +146,7 @@ function GlobeHeatmapLayers() {
   return null;
 }
 
-export function HeatmapBlock() {
+export default function Page() {
   return (
     <div className="bg-muted/50 relative h-screen">
       <div className="relative h-full">

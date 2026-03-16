@@ -19,7 +19,7 @@ import {
 
 const MAP_HEIGHT = "38rem";
 
-export function AnalyticsMapBlock() {
+export default function Page() {
   return (
     <div
       className="bg-background relative min-h-screen"
