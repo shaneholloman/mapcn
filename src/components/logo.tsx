@@ -1,7 +1,6 @@
 import Link from "next/link";
 import { MapPin } from "lucide-react";
 import { cn } from "@/lib/utils";
-import { Button } from "./ui/button";
 
 interface LogoProps {
   className?: string;
@@ -10,16 +9,16 @@ interface LogoProps {
 
 export function Logo({ className, onClick }: LogoProps) {
   return (
-    <Button
-      asChild
-      size="sm"
-      variant="ghost"
-      className={cn("px-2.5 text-base font-semibold", className)}
+    <Link
+      href="/"
+      onClick={onClick}
+      className={cn(
+        "flex h-8 items-center gap-1.5 text-lg font-semibold",
+        className,
+      )}
     >
-      <Link href="/" onClick={onClick}>
-        <MapPin />
-        mapcn
-      </Link>
-    </Button>
+      <MapPin className="size-4" />
+      mapcn
+    </Link>
   );
 }
